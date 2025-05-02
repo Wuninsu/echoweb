@@ -47,9 +47,14 @@
                     <input type="checkbox" wire:model="remember" class="form-check-input" id="remember">
                     <label class="form-check-label" for="remember">{{ __('Remember me') }}</label>
                 </div>
-
-                <div class="d-grid mb-3">
-                    <button type="submit" class="btn btn-primary">{{ __('Log in') }}</button>
+                <div class="mb-3 d-grid">
+                    <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">
+                        <span wire:loading.remove>{{ __('Log in') }}</span>
+                        <span wire:loading>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            {{ __('Authenticating...') }}
+                        </span>
+                    </button>
                 </div>
             </form>
 

@@ -45,8 +45,8 @@
                                 <td class="pe-0">{{ $users->firstItem() + $loop->index }}</td>
                                 <td class="ps-0">
                                     <div class="d-flex align-items-center">
-                                        <img width="50" src="{{ asset('storage/' . ($user->avatar ?? NO_IMAGE)) }}"
-                                            alt="" class="img-4by3-sm rounded-3" />
+                                        <img src="{{ asset('storage/' . ($user->avatar ?? NO_IMAGE)) }}"
+                                            alt="" class="img-thumbnail" width="80" />
                                         <div class="ms-3">
                                             <h5 class="mb-0">
                                                 <a href="#!" class="text-inherit">{{ $user->username }}</a>
