@@ -5,9 +5,22 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::middleware(['guest'])->group(function () {
+Route::get('/', App\Livewire\Guest\Home::class)->name('home');
+Route::get('/home', App\Livewire\Guest\Home::class)->name('home.redirect');
+
+Route::get('/services', App\Livewire\Guest\Service::class)->name('service');
+Route::get('/about', App\Livewire\Guest\About::class)->name('about');
+Route::get('/contact', App\Livewire\Guest\Contact::class)->name('contact');
+Route::get('/blogs', App\Livewire\Guest\Blog::class)->name('blog');
+Route::get('/blogs/post/show/{post}', App\Livewire\Guest\ShowPost::class)->name('posts.show');
+
+
+
+// Route::get('contact-message/reply/{messageId}', App\Livewire\Backend\MessageResponse::class)->name('contact.reply');
+// Route::get('otp', App\Livewire\Auth\OtpForm::class)->name('otp');
+// Route::get('forgot-password', ResetForm::class)->name('reset-password');
+// });
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -22,7 +35,7 @@ Route::middleware(['auth', 'role:admin|super-admin'])->group(function () {
 
 
     Route::get('users', App\Livewire\Admin\Index\Users::class)->name('users.index');
-    Route::get('services', App\Livewire\Admin\Index\Services::class)->name('services.index');
+    Route::get('our-services', App\Livewire\Admin\Index\Services::class)->name('services.index');
 
     Route::get('projects', App\Livewire\Admin\Index\Projects::class)->name('projects.index');
     Route::get('/projects/create', App\Livewire\Admin\Forms\ProjectForm::class)->name('projects.create')->middleware('permission:create projects');
@@ -45,7 +58,6 @@ Route::middleware(['auth', 'role:admin|super-admin'])->group(function () {
     Route::get('posts', App\Livewire\Admin\Index\Blogs::class)->name('posts.index');
     Route::get('/posts/create', App\Livewire\Admin\Forms\BlogForm::class)->name('posts.create')->middleware('permission:create posts');
     Route::get('/posts/edit/{post}', App\Livewire\Admin\Forms\BlogForm::class)->name('posts.edit')->middleware('permission:edit posts');
-    Route::get('/posts/show/{post}', App\Livewire\Admin\Index\ShowPost::class)->name('posts.show')->middleware('permission:show posts');
 
     Route::get('/testimonies', App\Livewire\Admin\Index\Testimonies::class)->name('testimonies.index');
     Route::get('/contact-messages', App\Livewire\Admin\Index\Messages::class)->name('messages.index');

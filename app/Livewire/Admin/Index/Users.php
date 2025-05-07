@@ -3,6 +3,8 @@
 namespace App\Livewire\Admin\Index;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -31,28 +33,22 @@ class Users extends Component
 
     public function confirmDelete($uuid)
     {
-
-        $this->user_uuid = $uuid;
-        $this->showDelete = true;
+        $this->dispatch('confirm', uuid: $uuid);
     }
 
-    public function handleDelete()
+    #[On('delete')]
+    public function handleDelete($uuid)
     {
-        if ($this->user_uuid) {
-            $user = User::where('uuid', $this->user_uuid)->firstOrFail();
-            if ($user) {
-                $user->delete();
-                sweetalert()->success('User deleted successfully.');
-            } else {
-                sweetalert()->error('User not found.');
+        $user = User::where('uuid', $uuid)->first();
+        if ($user) {
+            if ($user->avatar && Storage::disk('public')->exists($user->avatar)) {
+                Storage::disk('public')->delete($user->avatar);
             }
-
-            $this->user_uuid = null;
+            $user->delete();
+            sweetalert()->success('User deleted successfully.');
         } else {
-            sweetalert()->error('No user selected.');
+            sweetalert()->error('User not found.');
         }
-        $this->reset();
-        $this->showDelete = false;
     }
 
 

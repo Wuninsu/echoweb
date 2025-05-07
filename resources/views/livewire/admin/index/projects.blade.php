@@ -5,8 +5,8 @@
             <div class="d-flex flex-wrap align-items-end gap-3">
                 <div class="col-12 col-md-auto flex-grow-1">
                     <label for="filterName" class="form-label">Name</label>
-                    <input type="text" wire:model.live.debounce.500ms='search' id="filterName" class="form-control w-100"
-                        placeholder="Search by name">
+                    <input type="text" wire:model.live.debounce.500ms='search' id="filterName"
+                        class="form-control w-100" placeholder="Search by name">
                 </div>
 
                 <div class="col-12 col-md-auto ms-md-auto">
@@ -19,7 +19,7 @@
         <div class="card-body">
             <!-- Users Table -->
             <div class="table-responsive">
-                <table id="example" class="table table-bordered table-hover align-middle">
+                <table class="table table-bordered table-hover align-middle">
                     <thead class="table-light">
                         <tr>
                             <th scope="col">#</th>
@@ -35,9 +35,8 @@
                                 <td class="pe-0">{{ $projects->firstItem() + $loop->index }}</td>
                                 <td class="ps-0">
                                     <div class="d-flex align-items-center">
-                                        <img
-                                            src="{{ asset('storage/' . ($project->image ?? NO_IMAGE)) }}" alt=""
-                                           class="img-thumbnail" width="80" />
+                                        <img src="{{ asset('storage/' . ($project->image ?? NO_IMAGE)) }}" alt=""
+                                            class="img-thumbnail" width="80" />
                                         <div class="ms-3">
                                             <h5 class="mb-0">{{ \Illuminate\Support\Str::limit($project->title, 20) }}
                                             </h5>
@@ -78,25 +77,26 @@
         </div>
     </div>
     @script
-        <script>
-            $wire.on('confirm', (event) => {
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You are about to delete this project. This action cannot be undone.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Yes, delete it!',
-                    cancelButtonText: 'No, cancel!',
-                    reverseButtons: true
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $wire.dispatch('delete', {
-                            id: event.id
-                        })
-                    }
-                });
-
+    <script>
+        $wire.on('confirm', (event) => {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You are about to delete this project. This action cannot be undone.",
+                icon: 'warning',
+                confirmButtonColor: "#d33",
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $wire.dispatch('delete', {
+                        id: event.id
+                    })
+                }
             });
-        </script>
+
+        });
+    </script>
     @endscript
 </div>

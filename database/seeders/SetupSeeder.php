@@ -46,6 +46,8 @@ class SetupSeeder extends Seeder
             ['key' => 'support_phone', 'value' => '+1234567890'],
             ['key' => 'recaptcha_site_key', 'value' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'],
             ['key' => 'recaptcha_secret_key', 'value' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'],
+            ['key' => 'site_description', 'value' => 'A modern platform for business and education management.'],
+            ['key' => 'keywords', 'value' => 'school, management, business, platform'],
 
         ];
         foreach ($settings as $setting) {

@@ -28,7 +28,7 @@ class ProjectForm extends Component
             'title' => 'required|min:4|max:255',
             'client' => 'required|string',
             'slug' => 'nullable|string',
-            'description' => 'nullable|string|max:1000',
+            'description' => 'required|string|max:1000',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'status' => 'nullable|boolean',
             'start_date' => 'nullable|date|before_or_equal:end_date',

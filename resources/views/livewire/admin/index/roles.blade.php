@@ -19,8 +19,8 @@
                 <div
                     class="@canany(['create roles', 'edit roles']) col-md-8 @else col-12 @endcanany order-2 order-md-1">
                     <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead class="table-secondary">
+                        <table class="table table-bordered table-hover align-middle">
+                            <thead class="table-light">
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
@@ -123,6 +123,7 @@
                     title: 'Are you sure?',
                     text: "You are about to delete this role. This action cannot be undone.",
                     icon: 'warning',
+                   confirmButtonColor: "#d33",
                     showCancelButton: true,
                     confirmButtonText: 'Yes, delete it!',
                     cancelButtonText: 'No, cancel!',

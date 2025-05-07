@@ -84,7 +84,7 @@ class User extends Authenticatable
             ->implode('');
     }
 
-    public function blogs()
+    public function posts()
     {
         return $this->hasMany(Blog::class, 'author_id');
     }

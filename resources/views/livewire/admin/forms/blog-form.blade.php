@@ -112,7 +112,7 @@
                         ['style', ['style']],
                         ['font', ['bold', 'underline', 'clear']],
                         ['color', ['color']],
-                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['para', ['ul', 'ol', 'paragraph', 'blockquote']],
                         ['table', ['table']],
                         ['insert', ['link']],
                         ['view', ['fullscreen', 'codeview', 'help']]

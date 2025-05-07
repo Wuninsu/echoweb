@@ -31,4 +31,11 @@ class Blog extends Model
     {
         return $this->belongsTo(User::class, 'author_id');
     }
+
+    // app/Models/Blog.php
+
+    public function comments()
+    {
+        return $this->hasMany(PostComment::class)->whereNull('parent_id')->latest();
+    }
 }

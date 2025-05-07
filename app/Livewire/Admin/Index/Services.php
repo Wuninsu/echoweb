@@ -49,7 +49,7 @@ class Services extends Component
         $this->isEdit = true;
     }
 
-    public function updatePermission()
+    public function updateService()
     {
         $validatedData = $this->validate();
         $service = Service::find($this->service_id);

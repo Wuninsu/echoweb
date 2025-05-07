@@ -29,7 +29,7 @@
         <div class="card-body">
             <!-- Users Table -->
             <div class="table-responsive">
-                <table id="example" class="table table-bordered table-hover align-middle">
+                <table class="table table-bordered table-hover align-middle">
                     <thead class="table-light">
                         <tr>
                             <th scope="col">#</th>
@@ -58,13 +58,13 @@
                                 <td>
                                     @foreach ($user->getRoleNames() as $role)
                                         @php
-                                            $badgeClass = match ($role) {
-                                                'admin' => 'bg-danger',
-                                                'editor' => 'bg-success',
-                                                'user' => 'bg-primary',
-                                                'super-admin' => 'bg-primary',
-                                                default => 'bg-secondary',
-                                            };
+        $badgeClass = match ($role) {
+            'admin' => 'bg-danger',
+            'editor' => 'bg-success',
+            'user' => 'bg-primary',
+            'super-admin' => 'bg-primary',
+            default => 'bg-secondary',
+        };
                                         @endphp
                                         <span class="badge {{ $badgeClass }}">{{ ucfirst($role) }}</span>
                                     @endforeach
@@ -103,4 +103,28 @@
             </div>
         </div>
     </div>
+
+    @script
+    <script>
+        $wire.on('confirm', (event) => {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You are about to delete this user. This action cannot be undone.",
+                icon: 'warning',
+                confirmButtonColor: "#d33",
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $wire.dispatch('delete', {
+                        uuid: event.uuid
+                    })
+                }
+            });
+
+        });
+    </script>
+    @endscript
 </div>

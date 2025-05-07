@@ -11,6 +11,31 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+if (!function_exists('generateSmsMessage')) {
+    /**
+     * Generate an SMS message from a template and replace placeholders.
+     *
+     * @param string $templateKey The key or identifier of the template.
+     * @param array $data The data to replace in the template.
+     * @return string|null The generated SMS message or null if template not found.
+     */
+    function generateSmsMessage(string $templateKey, array $data): ?string
+    {
+        $template = \App\Models\SmsTemplate::where('name', $templateKey)->first();
+
+        if (!$template) {
+            return false;
+        }
+        $message = $template->template;
+
+        // Replace placeholders with data
+        foreach ($data as $key => $value) {
+            $message = str_replace("{{$key}}", $value, $message);
+        }
+
+        return $message;
+    }
+}
 
 if (!function_exists('uploadFile')) {
     /**

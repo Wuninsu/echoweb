@@ -51,6 +51,18 @@ class RolePermissionsSeeder extends Seeder
             'ban users',
             'unban users',
 
+            //project
+            'create projects',
+            'edit projects',
+
+            //posts
+            'create posts',
+            'edit posts',
+            'show posts',
+
+            'create comment',
+            'reply comment'
+
         ];
 
         // Create permissions
@@ -83,7 +95,8 @@ class RolePermissionsSeeder extends Seeder
                 'moderate content',
                 'ban users',
                 'unban users',
-            ]
+            ],
+            'guest' => ['create comment', 'reply comment']
         ];
 
         // Create roles and assign permissions

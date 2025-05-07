@@ -19,8 +19,8 @@
                 <div
                     class="@can('manage permissions') col-md-8 @elsecannot('manage permissions') col-md-12 @endcan order-2 order-md-1">
                     <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead class="table-secondary">
+                    <table class="table table-bordered table-hover align-middle">
+                        <thead class="table-light">
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
@@ -36,7 +36,7 @@
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $service->title }}</td>
-                                            <td>{{ \Illuminate\Support\Str::limit($service->description, 50, '...') }}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($service->description, 30, '...') }}</td>
                                             @can('manage permissions')
                                                 <td class="text-end">
                                                     <button type="button" wire:click="editService({{ $service->id }})"
@@ -125,6 +125,7 @@
                     title: 'Are you sure?',
                     text: "You are about to delete this service. This action cannot be undone.",
                     icon: 'warning',
+                    confirmButtonColor: "#d33",
                     showCancelButton: true,
                     confirmButtonText: 'Yes, delete it!',
                     cancelButtonText: 'No, cancel!',
