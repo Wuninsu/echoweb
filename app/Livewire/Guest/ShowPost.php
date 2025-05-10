@@ -25,12 +25,17 @@ class ShowPost extends Component
     public function mount(Blog $post)
     {
         $this->post = $post;
+        $viewed = session()->get('viewed_posts', []);
+
+        if (!in_array($post->id, $viewed)) {
+            $post->increment('views');
+            session()->push('viewed_posts', $post->id);
+        }
         // Check if the user is authenticated
         if (Auth::check()) {
             $this->name = Auth::user()->name;
             $this->email = Auth::user()->email;
         }
-
     }
 
     protected function rules()
@@ -50,9 +55,8 @@ class ShowPost extends Component
         // Check if the user is logged in
         if (!Auth::check()) {
             // Check if a user with a guest-like email already exists
-            $email = 'guest_' . Str::random(8) . '@example.com'; // Generate a guest-like email
 
-            $guestUser = User::where('email', $email)->first();
+            $guestUser = User::where('email', $this->email)->first();
 
             if (!$guestUser) {
                 // If no user exists with this email, create a new guest user
@@ -62,14 +66,11 @@ class ShowPost extends Component
                     'email' => $this->email, // Using the generated guest email
                     'password' => Hash::make('guestpassword'),
                 ]);
-
                 // Assign the 'guest' role to the guest user
                 $guestUser->assignRole($guestRole);
             }
-
-            // Log the guest user in
+            # code... // Log the guest user in
             // Auth::login($guestUser);
-
             // Use the user ID of the found or newly created guest user
             $userId = $guestUser->id;
         } else {

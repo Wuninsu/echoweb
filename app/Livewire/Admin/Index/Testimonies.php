@@ -54,9 +54,9 @@ class Testimonies extends Component
             }
             // Delete testimony from database
             $testimony->delete();
-            flash()->success('Testimony deleted successfully.');
+            sweetalert()->success('Testimony deleted successfully.');
         } else {
-            flash()->error('No testimony was found');
+            sweetalert()->error('No testimony was found');
         }
     }
 
@@ -112,17 +112,18 @@ class Testimonies extends Component
                     'message' => strip_tags($this->message),
                     'image' => $filePath,
                     'is_active' => $this->is_active,
+                    'rating' => rand(1, 5),
                 ]);
             }
 
             DB::commit(); // ✅ Commit changes if everything is successful
 
-            flash()->success($this->testimony_id ? 'Testimony updated successfully' : 'Testimony created successfully');
+            sweetalert()->success($this->testimony_id ? 'Testimony updated successfully' : 'Testimony created successfully');
             $this->resetPage();
             $this->dispatch('close-modal');
         } catch (\Exception $e) {
             DB::rollBack();
-            flash()->error('Something went wrong! ' . $e->getMessage());
+            sweetalert()->error('Something went wrong! ' . $e->getMessage());
         }
     }
 

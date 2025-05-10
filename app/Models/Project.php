@@ -10,16 +10,40 @@ class Project extends Model
         'title',
         'slug',
         'description',
-        'image',
         'client',
         'start_date',
         'end_date',
-        'status'
+        'status',
+        'service_id',
+        'featured',
+        'url',
+        'technologies',
+        'is_visible',
+        'created_by',
+        'updated_by',
     ];
+
+    // protected $casts = [
+    //     'technologies' => 'array',
+    //     'start_date' => 'date',
+    //     'end_date' => 'date',
+    //     'featured' => 'boolean',
+    //     'is_visible' => 'boolean',
+    // ];
 
     public function getRouteKeyName()
     {
         return 'slug';
     }
     protected $guarded = ['slug'];
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(ProjectImage::class);
+    }
 }

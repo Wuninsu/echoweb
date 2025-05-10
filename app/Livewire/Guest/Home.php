@@ -3,8 +3,11 @@
 namespace App\Livewire\Guest;
 
 use App\Models\Blog;
+use App\Models\Project;
 use App\Models\Service;
+use App\Models\Setup;
 use App\Models\Slider;
+use App\Models\Testimony;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -15,6 +18,11 @@ class Home extends Component
     public $services;
     public $blogs;
 
+    public $testimonies;
+    public $projects;
+
+    public $settings;
+
     public function mount()
     {
         $this->sliders = Slider::where('is_active', true)
@@ -24,6 +32,19 @@ class Home extends Component
         $this->blogs = Blog::where('status', 'published')
             ->latest('published_at')
             ->limit(3)->get();
+
+        $this->testimonies = Testimony::where('is_active', true)->get();
+        $this->projects = Project::where('featured', true)->where('is_visible', true)->latest()->get();
+
+        $settingsData = Setup::all();
+
+        foreach ($settingsData as $setting) {
+            if (in_array($setting->key, ['why_choose_us_points'])) {
+                $this->settings[$setting->key] = json_decode($setting->value, true) ?? [];
+            } else {
+                $this->settings[$setting->key] = $setting->value;
+            }
+        }
     }
 
     public function render()

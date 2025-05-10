@@ -20,8 +20,12 @@
         <div class="w-100" style="max-width: 400px;">
             <a href="{{ route(name: 'home') }}"
                 class="d-flex flex-column align-items-center mb-4 text-decoration-none fw-medium">
-                <span class="d-flex align-items-center justify-content-center mb-2" style="width: 36px; height: 36px;">
-                    <x-app-logo-icon class="text-dark dark:text-light" style="width: 36px; height: 36px;" />
+                <span class="d-flex align-items-center justify-content-center mb-2" style="width: 100px; height: 100px;">
+                    
+                    @php
+                    $setups = App\Models\Setup::setupData();
+                    @endphp
+                    <img src="{{asset('storage/' . ($setups['favicon'] ?? NO_IMAGE))}}" style="width: 100px; height: 100px;" alt="" srcset="">
                 </span>
                 <span class="visually-hidden">{{ config('app.name', 'Laravel') }}</span>
             </a>

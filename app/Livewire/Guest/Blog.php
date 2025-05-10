@@ -11,6 +11,14 @@ use Livewire\WithPagination;
 class Blog extends Component
 {
     use WithPagination;
+    public $search = '';
+    public $searchApplied = false;
+
+    public function applySearch()
+    {
+        $this->searchApplied = true;
+        $this->resetPage(); // Reset to page 1 when new search is triggered
+    }
     public function render()
     {
         seo()
@@ -24,9 +32,15 @@ class Blog extends Component
             ->flipp('blog', 'o1vhcg5npgfu')
             ->twitterSite('@echoedgeds');
 
-        $blogs = ModelsBlog::where('status', 'published')
+        $blogs = ModelsBlog::query()
+            ->when($this->searchApplied && $this->search, function ($query) {
+                $query->where('title', 'like', '%' . $this->search . '%');
+            })->where('status', 'published')
             ->latest('published_at')
-            ->paginate(6); // 6 posts per page
-        return view('livewire.guest.blog', compact('blogs'));
+            ->paginate(paginationLimit()); // 6 posts per page
+        $recentPosts = ModelsBlog::where('status', 'published')
+            ->latest('published_at')
+            ->limit(3)->get();
+        return view('livewire.guest.blog', compact('blogs', 'recentPosts'));
     }
 }

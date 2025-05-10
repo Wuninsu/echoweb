@@ -11,4 +11,9 @@ class Service extends Model
         'description',
         'icon'
     ];
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

@@ -20,7 +20,7 @@ class SmsTemplateSeeder extends Seeder
             ],
             [
                 'name' => 'reaching_out_thanks',
-                'template' => 'Hello {customer},Thank you for reaching out to us! Your message has been received, and we will get back to you shortly. Best regards,StyleAStatement'
+                'template' => 'Hello {customer},Thank you for reaching out to us! Your message has been received, and we will get back to you shortly.'
             ],
             [
                 'name' => 'message_reply_alert',

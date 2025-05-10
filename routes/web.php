@@ -3,6 +3,7 @@
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
+use App\Livewire\Settings\Userbio;
 use Illuminate\Support\Facades\Route;
 
 // Route::middleware(['guest'])->group(function () {
@@ -14,6 +15,10 @@ Route::get('/about', App\Livewire\Guest\About::class)->name('about');
 Route::get('/contact', App\Livewire\Guest\Contact::class)->name('contact');
 Route::get('/blogs', App\Livewire\Guest\Blog::class)->name('blog');
 Route::get('/blogs/post/show/{post}', App\Livewire\Guest\ShowPost::class)->name('posts.show');
+Route::get('/works', App\Livewire\Guest\Works::class)->name('works');
+Route::get('/works/show/{project}', App\Livewire\Guest\ShowProject::class)->name('works.show');
+
+Route::get('/faq\'s', App\Livewire\Guest\Faqs::class)->name('faqs');
 
 
 
@@ -32,6 +37,7 @@ Route::middleware(['auth', 'role:admin|super-admin'])->group(function () {
     Route::get('settings/profile', Profile::class)->name('settings.profile');
     Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
+    Route::get('settings/bio', Userbio::class)->name('settings.bio');
 
 
     Route::get('users', App\Livewire\Admin\Index\Users::class)->name('users.index');
@@ -65,6 +71,7 @@ Route::middleware(['auth', 'role:admin|super-admin'])->group(function () {
 
     Route::get('/setups', App\Livewire\Admin\Index\Setups::class)->name('setups.index');
     Route::get('/setups/sliders', App\Livewire\Admin\Index\Sliders::class)->name('sliders.index');
+    Route::get('/setups/faq\'s', App\Livewire\Admin\Index\FaqIndex::class)->name('faq.index');
 });
 
 require __DIR__ . '/auth.php';

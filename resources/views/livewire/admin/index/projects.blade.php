@@ -35,8 +35,8 @@
                                 <td class="pe-0">{{ $projects->firstItem() + $loop->index }}</td>
                                 <td class="ps-0">
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ asset('storage/' . ($project->image ?? NO_IMAGE)) }}" alt=""
-                                            class="img-thumbnail" width="80" />
+                                        <img src="{{ asset('storage/' . ($project->images->first()?->path ?? NO_IMAGE)) }}"
+                                            alt="" class="img-thumbnail" width="80" />
                                         <div class="ms-3">
                                             <h5 class="mb-0">{{ \Illuminate\Support\Str::limit($project->title, 20) }}
                                             </h5>

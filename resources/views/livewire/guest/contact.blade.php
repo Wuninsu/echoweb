@@ -1,25 +1,6 @@
 <div>
-    <!-- Start inner Page hero-->
-    <section class="d-flex align-items-center page-hero hero-vegas-slider inner-page-hero " id="page-hero">
-        <div class="overlay-color"></div>
-        <div class="vegas-slider-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 hero-text-area ">
-                        <h1 class="hero-title  wow fadeInUp" data-wow-delay=".2s">Contact Us</h1>
-                        <nav aria-label="breadcrumb ">
-                            <ul class="breadcrumb wow fadeInUp" data-wow-delay=".6s">
-                                <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{route('home')}}"><i
-                                            class="fas fa-home icon "></i>home</a></li>
-                                <li class="breadcrumb-item active">contact us</li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End inner Page hero-->
+    @include('partials.hero', ['title' => 'Contact Us'])
+
     <!-- Start contact-us -->
     <section class="contact-us  mega-section  pb-0" id="contact-us">
         <div class="container">
@@ -37,7 +18,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="info-panel"><i class="fas fa-mobile-alt icon"></i>
+                            <div class="info-panel"><i class="fas fa-mobile-alt icon "></i>
                                 <div class="info-content">
                                     <h6 class="info-title">phone numbers</h6>
                                     <p class="info-text">
@@ -77,101 +58,105 @@
                             <p class="section-subtitle wow fadeInUp" data-wow-delay=".6s">We Will answer your questions
                                 as soon as possible</p>
                         </div>
-                        <div class="contact-form-area input-boxed">
-                            <!--Form To have user messages-->
-                            <form wire:submit="sendContactMessage" class="main-form" id="contact-us-form"><span
-                                    class="done-msg"></span>
-                                <div class="row ">
-                                    <div class="col-12 col-lg-6">
-                                        <div class="   input-wrapper">
-                                            <input class="text-input  @error('name') border-danger is-invalid @enderror"
-                                                id="user-name" wire:model="name" type="text" />
-                                            <label for="user-name"> Name <span class="req">*</span></label><span
-                                                class="b-border"></span><span class="error-msg"></span>
-                                            @error('name')
+                        <div class="contact-form-inputs wow fadeInUp" data-wow-delay=".6s">
+                            <div class="custom-form-area input-boxed">
+                                <!--Form To have user messages-->
+                                <form class="main-form" id="contact-us-form" wire:submit="sendContactMessage"><span
+                                        class="done-msg"></span>
+                                    <div class="row ">
+                                        <div class="col-12 col-lg-6">
+                                            <div class="input-wrapper">
+                                                <label class="input-label" for="user-name"> Name <span
+                                                        class="req">*</span></label>
+                                                <input
+                                                    class="text-input @error('name') border-danger is-invalid @enderror"
+                                                    id="user-name" wire:model="name" type="text" />
+                                                @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                            <div class="input-wrapper">
+                                                <label class="input-label" for="user-phone"> Phone <span
+                                                        class="req">*</span></label>
+                                                <input
+                                                    class="text-input @error('phone') border-danger is-invalid @enderror"
+                                                    id="user-phone" wire:model="phone" type="text" />
+                                                @error('phone')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        {{-- <div class="col-12 ">
+                                            <div class="   input-wrapper">
+                                                <label class="input-label" for="mail"> E-Mail <span
+                                                        class="req">*</span></label>
+                                                <input
+                                                    class="text-input @error('email') border-danger is-invalid @enderror"
+                                                    id="mail" wire:model="email" type="email" />
+                                                @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
-                                            @enderror
+                                                @enderror
+                                            </div>
+                                        </div> --}}
+                                        <div class="col-12 ">
+                                            <div class="   input-wrapper">
+                                                <label class="input-label" for="msg-subject"> Subject <span
+                                                        class="req">*</span></label>
+                                                <input
+                                                    class="text-input @error('subject') border-danger is-invalid @enderror"
+                                                    id="msg-subject" wire:model="subject" type="text" />
+                                                @error('subject')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <div class="   input-wrapper">
-                                            <input
-                                                class="text-input  @error('phone') border-danger is-invalid @enderror"
-                                                id="user-phone" wire:model="phone" type="text" />
-                                            <label for="user-phone"> Phone <span class="req">*</span></label><span
-                                                class="b-border"></span><span class="error-msg"></span>
-                                            @error('phone')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                        <div class="col-12 ">
+                                            <div class="   input-wrapper">
+                                                <label class="input-label" for="msg-text"> your message <span
+                                                        class="req">*</span></label>
+                                                <textarea
+                                                    class=" text-input @error('message') border-danger is-invalid @enderror"
+                                                    id="msg-text" wire:model="message"></textarea>
+                                                @error('message')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        @if (session()->has('success'))
+                                            <div class="alert alert-success">{{ session('success') }}</div>
+                                        @endif
+                                        @if (session()->has('error'))
+                                            <div class="alert alert-danger">{{ session('error') }}</div>
+                                        @endif
+                                        <div class="col-12 submit-wrapper">
+                                            <button type="submit" class="btn-solid" wire:loading.attr="disabled">
+                                                <span wire:loading.remove>Submit Message</span>
+                                                <span wire:loading wire:target="sendContactMessage">
+                                                    <i class="fa fa-spinner fa-spin"></i>
+                                                    Submitting Message, please wait....
                                                 </span>
-                                            @enderror
+                                            </button>
                                         </div>
                                     </div>
-                                    {{-- <div class="col-12 ">
-                                        <div class="   input-wrapper">
-                                            <input
-                                                class="text-input  @error('email') border-danger is-invalid @enderror"
-                                                id="msg-email" wire:model="email" type="text" />
-                                            <label for="msg-email"> E-mail <span class="req">*</span></label><span
-                                                class="b-border"></span><span class="error-msg"></span>
-                                            @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div> --}}
-                                    <div class="col-12 ">
-                                        <div class="   input-wrapper">
-                                            <input
-                                                class="text-input  @error('subject') border-danger is-invalid @enderror"
-                                                id="msg-subject" wire:model="subject" type="text" />
-                                            <label for="msg-subject"> Subject <span class="req">*</span></label><span
-                                                class="b-border"></span><span class="error-msg"></span>
-                                            @error('subject')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-12 ">
-                                        <div class="   input-wrapper">
-                                            <textarea
-                                                class=" text-input  @error('message') border-danger is-invalid @enderror"
-                                                id="msg-text" wire:model="message"></textarea>
-                                            <label for="msg-text"> your message <span class="req">*</span></label><span
-                                                class="b-border"></span><i></i><span class="error-msg"></span>
-                                            @error('message')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    @if (session()->has('success'))
-                                        <div class="alert alert-success">{{ session('success') }}</div>
-                                    @endif
-                                    @if (session()->has('error'))
-                                        <div class="alert alert-danger">{{ session('error') }}</div>
-                                    @endif
-                                    <div class="col-12 submit-wrapper">
-                                        <button type="submit" class="btn-solid" wire:loading.attr="disabled">
-                                            <span wire:loading.remove>Submit Message</span>
-                                            <span wire:loading wire:target="sendContactMessage">
-                                                <i class="fa fa-spinner fa-spin"></i>
-                                                Submitting Message, please wait....
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="map-box pt-5 mt-5">
             <div class="mapouter">

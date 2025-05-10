@@ -17,191 +17,11 @@
     <!-- Summernote CSS/JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
+        </script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
-
-    <style>
-        [data-bs-theme="light"] {
-            --bs-red: #A52834;
-            --bs-danger: #A52834;
-            --bs-form-invalid-color: #A52834;
-            --bs-form-invalid-border-color: #dc3545;
-        }
-
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-
-        .b-example-divider {
-            width: 100%;
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
-
-        .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-        }
-
-        .bi {
-            vertical-align: -.125em;
-            fill: currentColor;
-        }
-
-        .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
-        }
-
-        .nav-scroller .nav {
-            display: flex;
-            flex-wrap: nowrap;
-            padding-bottom: 1rem;
-            margin-top: -1px;
-            overflow-x: auto;
-            text-align: center;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .btn-bd-primary {
-            --bd-violet-bg: #712cf9;
-            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-            --bs-btn-font-weight: 600;
-            --bs-btn-color: var(--bs-white);
-            --bs-btn-bg: var(--bd-violet-bg);
-            --bs-btn-border-color: var(--bd-violet-bg);
-            --bs-btn-hover-color: var(--bs-white);
-            --bs-btn-hover-bg: #6528e0;
-            --bs-btn-hover-border-color: #6528e0;
-            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-            --bs-btn-active-color: var(--bs-btn-hover-color);
-            --bs-btn-active-bg: #5a23c8;
-            --bs-btn-active-border-color: #5a23c8;
-        }
-
-        .bd-mode-toggle {
-            z-index: 1500;
-        }
-
-        .bd-mode-toggle .bi {
-            width: 1em;
-            height: 1em;
-        }
-
-        .bd-mode-toggle .dropdown-menu .active .bi {
-            display: block !important;
-        }
-    </style>
-    <style>
-        /* Custom dot for active navigation item */
-        .nav-link.custom-active {
-            position: relative;
-            padding-left: 20px;
-            /* Space for the dot */
-        }
-
-        .nav-link.custom-active::after {
-            content: '';
-            position: absolute;
-            right: 10px;
-            /* Position the dot to the left of the text */
-            top: 50%;
-            transform: translateY(-50%);
-            /* Center the dot vertically */
-            width: 8px;
-            height: 8px;
-            background-color: #A52834;
-            /* Blue dot color */
-            border-radius: 50%;
-            /* Circle shape */
-        }
-
-
-        .active {
-            background-color: #A52834 !important;
-            color: white !important;
-        }
-
-        .bi {
-            display: inline-block;
-            width: 1rem;
-            height: 1rem;
-        }
-
-        /*
-        * Sidebar
-        */
-
-        @media (min-width: 768px) {
-            .sidebar .offcanvas-lg {
-                position: -webkit-sticky;
-                position: sticky;
-                top: 48px;
-            }
-
-            .navbar-search {
-                display: block;
-            }
-        }
-
-        @media (min-width: 992px) {
-
-            /* lg and up */
-            .sidebar-full-lg {
-                height: 100vh !important;
-                position: sticky;
-                top: 0;
-                overflow-y: auto;
-            }
-        }
-
-        .sidebar .nav-link {
-            font-size: .875rem;
-            font-weight: 500;
-        }
-
-        .sidebar .nav-link.active {
-            color: #2470dc;
-        }
-
-        .sidebar-heading {
-            font-size: .75rem;
-        }
-
-        /*
- * Navbar
- */
-
-        .navbar-brand {
-            padding-top: .75rem;
-            padding-bottom: .75rem;
-            background-color: rgba(0, 0, 0, .25);
-            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
-        }
-
-        .navbar .form-control {
-            padding: .75rem 1rem;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 </head>
 
 <body>
@@ -336,8 +156,7 @@
         </ul>
 
         <div id="navbarSearch" class="navbar-search w-100 collapse">
-            <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search"
-                aria-label="Search">
+            <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
         </div>
     </header>
     <div class="container-fluid">
@@ -369,7 +188,8 @@
                             </li>
 
                             @php
-                                $isLinkActive = request()->routeIs('setups.*') || request()->routeIs('sliders.*');
+                                $isLinkActive = request()->routeIs('setups.*') || request()->routeIs('sliders.*')
+                                    || request()->routeIs('faq.*');
                             @endphp
 
                             <li class="nav-item">
@@ -395,6 +215,12 @@
                                             <a href="{{ route('sliders.index') }}"
                                                 class="nav-link small {{ request()->routeIs('sliders.*') ? 'custom-active' : '' }}">
                                                 <i class="bi bi-sliders"></i>{{ __('Sliders') }}
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('faq.index') }}"
+                                                class="nav-link small {{ request()->routeIs('faq.*') ? 'custom-active' : '' }}">
+                                                <i class="bi bi-file-earmark-easel"></i>{{ __('Faqs') }}
                                             </a>
                                         </li>
                                     </ul>
@@ -486,9 +312,9 @@
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="me-2 rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center"
                                     style="width: 35px; height: 35px;">
-                                    {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                                    {{ strtoupper(substr(auth()->user()->username, 0, 1)) }}
                                 </div>
-                                <strong>{{ auth()->user()->name }}</strong>
+                                <strong>{{ auth()->user()->username }}</strong>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ route('settings.profile') }}">
@@ -516,8 +342,7 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="py-4">
                     @if (!empty($title) && $title !== 'Dashboard')
-                        <div
-                            class="d-flex justify-content-between align-items-center mb-4 bg-body-tertiary border p-2">
+                        <div class="d-flex justify-content-between align-items-center mb-4 bg-body-tertiary border p-2">
                             <h2 class="mb-0">{{ $title ?? 'Unknown' }}</h2>
                             <a href="javascript:history.back()" class="btn btn-dark btn-sm">Back</a>
                         </div>

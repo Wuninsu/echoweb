@@ -13,14 +13,35 @@ class Setups extends Component
     use WithFileUploads;
     public $settings = [];
 
+    // public function mount()
+    // {
+    //     $settingsData = Setup::all();
+    //     foreach ($settingsData as $setting) {
+    //         $this->settings[$setting->key] = $setting->value;
+    //     }
+    // }
+
     public function mount()
     {
-        // Load the settings as an associative array
         $settingsData = Setup::all();
+
         foreach ($settingsData as $setting) {
-            $this->settings[$setting->key] = $setting->value;
+            if (in_array($setting->key, ['why_choose_us_points'])) {
+                $this->settings[$setting->key] = json_decode($setting->value, true) ?? [];
+            } else {
+                $this->settings[$setting->key] = $setting->value;
+            }
         }
     }
+
+
+    public function addWhyChooseUsPoint()
+    {
+        $points = json_decode($this->settings['why_choose_us_points'] ?? '[]', true);
+        $points[] = ['title' => '', 'description' => ''];
+        $this->settings['why_choose_us_points'] = $points;
+    }
+
 
     public function updateData()
     {
@@ -30,10 +51,14 @@ class Setups extends Component
 
             if ($setting) {
                 // Handle file uploads for logo and favicon
-                if (($key == 'logo' || $key == 'favicon') && $this->settings[$key] instanceof TemporaryUploadedFile) {
+                if ((in_array($key, ['logo', 'favicon', 'main_background_image', 'footer_background_image'])) && $this->settings[$key] instanceof TemporaryUploadedFile) {
                     $newFileName = $key . '_' . time() . '.' . $this->settings[$key]->extension();
                     $filePath = uploadFile($this->settings[$key], 'uploads', $newFileName);
                     $value = $filePath; // Set value to file path
+                }
+                // Handle JSON encoding for structured keys
+                if ($key === 'why_choose_us_points' && is_array($value)) {
+                    $value = json_encode($value);
                 }
 
                 // Update the settings table using 'key'

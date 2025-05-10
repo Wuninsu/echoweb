@@ -45,45 +45,39 @@
                                 <td class="pe-0">{{ $users->firstItem() + $loop->index }}</td>
                                 <td class="ps-0">
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ asset('storage/' . ($user->avatar ?? NO_IMAGE)) }}"
-                                            alt="" class="img-thumbnail" width="80" />
-                                        <div class="ms-3">
-                                            <h5 class="mb-0">
-                                                <a href="#!" class="text-inherit">{{ $user->username }}</a>
-                                            </h5>
+                                        <img src="{{ asset('storage/' . ($user->avatar ?? NO_IMAGE)) }}" alt="" class="ms-2 img-thumbnail" width="80" />
+                                        <div class="ms-2">
+                                            {{ $user->name }}
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{ $user->phone }}</td>
+                                <td>{{ $user->email }}</td>
                                 <td>
                                     @foreach ($user->getRoleNames() as $role)
                                         @php
-        $badgeClass = match ($role) {
-            'admin' => 'bg-danger',
-            'editor' => 'bg-success',
-            'user' => 'bg-primary',
-            'super-admin' => 'bg-primary',
-            default => 'bg-secondary',
-        };
+                                            $badgeClass = match ($role) {
+                                                'admin' => 'bg-danger',
+                                                'editor' => 'bg-success',
+                                                'user' => 'bg-primary',
+                                                'super-admin' => 'bg-primary',
+                                                default => 'bg-secondary',
+                                            };
                                         @endphp
                                         <span class="badge {{ $badgeClass }}">{{ ucfirst($role) }}</span>
                                     @endforeach
 
                                 </td>
                                 <td>
-                                    <a href="{{ route('users.edit', ['user' => $user->uuid]) }}"
-                                        class="btn btn-primary btn-sm"> <span wire:ignore><i data-feather="edit"
-                                                class="icon-xs"></i></span>Edit</a>
+                                    <a href="{{ route('users.edit', ['user' => $user->uuid]) }}" class="btn btn-primary btn-sm"> <span
+                                            wire:ignore><i class="bi bi-pencil-square" class="icon-xs"></i></span>Edit</a>
                                     <button type="button" @if ($user->hasRole('super-admin') || $user->hasRole('admin')) disabled @endif
-                                        wire:click="confirmDelete('{{ $user->uuid }}')"
-                                        class="btn btn-sm btn-danger">
-                                        <span wire:ignore><i data-feather="trash-2" class="icon-xs"></i></span>
+                                        wire:click="confirmDelete('{{ $user->uuid }}')" class="btn btn-sm btn-danger">
+                                        <span wire:ignore><i class="bi bi-trash" class="icon-xs"></i></span>
                                         Delete
                                     </button>
 
                                 </td>
                             </tr>
-
                         @empty
                             <tr>
                                 <td colspan="6">

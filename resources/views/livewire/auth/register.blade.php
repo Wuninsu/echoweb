@@ -19,10 +19,10 @@
                 <form wire:submit.prevent="register" class="d-flex flex-column gap-3">
                     <!-- Name -->
                     <div class="form-group">
-                        <label for="name" class="form-label mb-0">{{ __('Name') }}</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                            wire:model.defer="name" placeholder="{{ __('Full name') }}" autocomplete="name" autofocus />
-                        @error('name')
+                        <label for="username" class="form-label mb-0">{{ __('Username') }}</label>
+                        <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
+                            wire:model.defer="username" placeholder="{{ __('User name') }}" autocomplete="username" autofocus />
+                        @error('username')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>

@@ -96,7 +96,8 @@ class RolePermissionsSeeder extends Seeder
                 'ban users',
                 'unban users',
             ],
-            'guest' => ['create comment', 'reply comment']
+            'guest' => ['create comment', 'reply comment'],
+            'staff' => ['create comment', 'reply comment']
         ];
 
         // Create roles and assign permissions

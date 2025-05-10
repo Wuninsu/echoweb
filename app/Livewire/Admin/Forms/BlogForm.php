@@ -80,7 +80,7 @@ class BlogForm extends Component
                 'slug' => $this->slug,
                 'content' => $this->content,
                 'image' => $filePath,
-                'published_at' => $this->published_at ?? Carbon::now(),
+                // 'published_at' => $this->published_at ?? Carbon::now(),
                 'status' => $this->status,
             ]
         );
