@@ -18,7 +18,7 @@ class Service extends Component
             ->keywords('Echo Edge services, digital services Ghana, USSD development, Laravel web apps, facial recognition system, school management software Ghana')
             ->canonical(url()->current())
             ->twitterCard('summary_large_image')
-            ->image(default: fn() => asset('header.png'))
+            ->image(default: fn() => asset('storage/' . setupData('favicon')))
             ->flipp('services', 'o1vhcg5npgfu')
             ->twitterSite('@echoedgeds');
         $services = ModelsService::orderBy('id')->get();

@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+if (!function_exists('setupData')) {
+    function setupData($key): ?string
+    {
+        $setup = \App\Models\Setup::setupData();
+        return $setup[$key] ?? '';
+    }
+}
 if (!function_exists('generateSmsMessage')) {
     /**
      * Generate an SMS message from a template and replace placeholders.
@@ -97,7 +104,6 @@ if (!function_exists('intWithStyle')) {
     /** Style the number value with a suffix like 10M or 10K or 10.3B */
     function intWithStyle($n)
     {
-        return $n;
         if ($n < 1000) return $n;
         $suffix = ['', 'K', 'M', 'B', 'T', 'P', 'E', 'Z', 'Y'];
         $power = floor(log($n, 1000));

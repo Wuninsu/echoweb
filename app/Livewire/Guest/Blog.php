@@ -28,7 +28,7 @@ class Blog extends Component
             ->keywords('Echo Edge blog, tech articles Ghana, web development tips, USSD tutorials, Laravel Ghana blog, digital innovation Africa')
             ->canonical(url()->current())
             ->twitterCard('summary_large_image')
-            ->image(default: fn() => asset('header.png'))
+            ->image(default: fn() => asset('storage/' . setupData('favicon')))
             ->flipp('blog', 'o1vhcg5npgfu')
             ->twitterSite('@echoedgeds');
 

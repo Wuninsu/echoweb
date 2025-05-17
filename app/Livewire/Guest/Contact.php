@@ -89,7 +89,7 @@ class Contact extends Component
             ->keywords('Contact Echo Edge, tech support Ghana, Tamale web company, get in touch Echo Edge, digital consultation Ghana')
             ->canonical(url()->current())
             ->twitterCard('summary_large_image')
-            ->image(default: fn() => asset('header.png'))
+            ->image(default: fn() => asset('storage/' . setupData('favicon')))
             ->flipp('contact', 'o1vhcg5npgfu')
             ->twitterSite('@echoedgeds');
 

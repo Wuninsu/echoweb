@@ -26,7 +26,7 @@ return new class extends Migration
 
             $table->boolean('featured')->default(false);
             $table->string('url')->nullable();
-            $table->json('technologies')->nullable();
+            $table->text('technologies')->nullable();
             $table->boolean('is_visible')->default(true);
 
             $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();

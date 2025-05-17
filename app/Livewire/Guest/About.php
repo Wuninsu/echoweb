@@ -35,7 +35,7 @@ class About extends Component
             ->keywords('About Echo Edge, Echo Edge team, Tamale tech company, African digital innovation, Laravel experts Ghana')
             ->canonical(url()->current())
             ->twitterCard('summary_large_image')
-            ->image(default: fn() => asset('header.png'))
+            ->image(default: fn() => asset('storage/' . setupData('favicon')))
             ->flipp('about', 'o1vhcg5npgfu')
             ->twitterSite('@echoedgeds');
 

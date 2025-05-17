@@ -17,7 +17,7 @@ class Faqs extends Component
             ->keywords('Echo Edge FAQs, frequently asked questions, support, Echo Edge help, Echo Edge customer service, Echo Edge Ghana')
             ->canonical(url()->current())
             ->twitterCard('summary_large_image')
-            ->image(default: fn() => asset('header.png'))
+            ->image(default: fn() => asset('storage/' . setupData('favicon')))
             ->flipp('faqs', 'o1vhcg5npgfu')
             ->twitterSite('@echoedgeds');
 

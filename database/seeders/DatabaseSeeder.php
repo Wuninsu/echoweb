@@ -17,9 +17,9 @@ class DatabaseSeeder extends Seeder
             RolePermissionsSeeder::class,
             UserSeeder::class,
             SetupSeeder::class,
-            // ProjectsAndServicesSeeder::class,
+            ProjectsAndServicesSeeder::class,
             SlidersTableSeeder::class,
-            // BlogSeeder::class,
+            BlogSeeder::class,
             SmsTemplateSeeder::class,
             FaqSeeder::class,
         ]);

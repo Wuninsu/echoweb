@@ -105,7 +105,7 @@ class ProjectForm extends Component
                 'service_id' => $this->service_id,
                 'featured' => $this->featured,
                 'url' => $this->url,
-                'technologies' => $this->technologies,
+                'technologies' => json_encode([$this->technologies]),
                 'is_visible' => $this->is_visible,
             ]
         );

@@ -22,7 +22,7 @@ class ShowProject extends Component
             ->keywords($this->project->title . ', Echo Edge Projects, Digital Solutions, Web Development')
             ->canonical(url()->current())
             ->twitterCard('summary_large_image')
-            ->image(default: fn() => asset($this->project->image ?? 'header.png'))
+            ->image(default: fn() => asset('storage/' . ($this->project->image ?? setupData('favicon'))))
             ->flipp('project', 'o1vhcg5npgfu')
             ->twitterSite('@echoedgeds');
 

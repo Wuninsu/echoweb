@@ -109,7 +109,7 @@ class ShowPost extends Component
             ->keywords($this->post->title . ', Echo Edge blog, Digital solutions, Web Development')
             ->canonical(url()->current())
             ->twitterCard('summary_large_image')
-            ->image(default: fn() => asset($this->post->image ?? 'header.png'))
+            ->image(default: fn() => asset('storage/' . ($this->post->image ?? setupData('favicon'))))
             ->flipp('blog', 'o1vhcg5npgfu')
             ->twitterSite('@echoedgeds');
 

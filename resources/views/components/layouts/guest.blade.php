@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @php
-    $setups = App\Models\Setup::setupData();
+$setups = App\Models\Setup::setupData();
 @endphp
 
 <head>
@@ -15,9 +15,22 @@
         gtag('config', 'G-2XW3YCN95H');
     </script>
 
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5JNVV38T');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="index,follow">
+    <meta name="revisit-after" content="5">
     <x-seo::meta />
     <!-- fav icon -->
     <link rel="icon" href="{{asset('storage/' . ($setups['favicon'] ?? NO_IMAGE))}}">
@@ -58,6 +71,10 @@
 </head>
 
 <body class=" dark-theme ">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5JNVV38T" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!--Start Page Header-->
     <header class=" page-header   content-always-light header-basic" id="page-header">
         <div class="header-search-box">

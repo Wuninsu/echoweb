@@ -38,7 +38,7 @@
                                         <td class="text-center">
                                             @if ($testimony->image)
                                                 <img src="{{ asset('storage/' . ($testimony->image ?? NO_IMAGE)) }}"
-                                                    alt="Slide Image" class="img-thumbnail" width="80">
+                                                    alt="image" class="img-thumbnail" width="80">
                                             @else
                                                 <span class="text-muted">No Image</span>
                                             @endif

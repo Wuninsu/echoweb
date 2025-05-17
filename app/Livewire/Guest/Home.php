@@ -57,9 +57,9 @@ class Home extends Component
             ->keywords('Echo Edge, USSD solutions, Web applications Ghana, School management software, Facial recognition system, Digital solutions Tamale, Laravel development Ghana')
             ->canonical(url()->current())
             ->twitterCard('summary_large_image')
-            ->image(default: fn() => asset('header.png'))
+            ->image(default: fn() => asset('storage/' . setupData('favicon')))
             ->flipp('blog', 'o1vhcg5npgfu')
-            ->twitterSite('@echoedgeds');
+            ->twitterSite('@voteprompt');
 
         return view('livewire.guest.home');
     }
